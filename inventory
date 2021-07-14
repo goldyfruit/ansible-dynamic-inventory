@@ -1,0 +1,4 @@
+#!/bin/bash
+if [[ $1 != "--list" ]]; then exit 1; fi
+
+curl -s -X GET http://localhost:3000/inventories/2 |  jq | grep -v "id" | jq
