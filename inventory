@@ -1,4 +1,0 @@
-#!/bin/bash
-if [[ $1 != "--list" ]]; then exit 1; fi
-
-curl -s -X GET http://150.239.165.187/inventories/1 |   grep -v "id"
