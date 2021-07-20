@@ -3,6 +3,15 @@
   gather_facts: no
 
   tasks:
-    - ansible.builtin.debug:
-        msg: "Just a debug message"
-      
+    - name: PUT on callback endpoint
+      vars:
+        payload:
+          status: true
+          state: processed
+        id: 9692821
+      ansible.builtin.uri:
+        url: "http://150.239.165.187/callbacks/{{ id }}"
+        method: PUT
+        body: "{{ payload | to_json }}"
+        status_code: 200
+        body_format: json
